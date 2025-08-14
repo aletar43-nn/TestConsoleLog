@@ -1,7 +1,7 @@
 import argparse
 import json
 
-from tabulate import tabulate
+# from tabulate import tabulate
 
 
 class Logs:
@@ -17,12 +17,10 @@ class Logs:
 
     def _read_logs(self):
         for file_name in self.files_list:
-            print(self.files_list)
             self._read_file_logs(file_name)
 
 
 class Report:
-
     def __init__(
         self,
         report_type: str,
@@ -31,7 +29,7 @@ class Report:
         self.report_type = report_type
         self.logs = logs
         self.report_functions = {
-            '-average': self.average
+            'average': self.average
         }
 
     def average(self):
@@ -40,6 +38,10 @@ class Report:
     def write_report(self):
         r_type = self.report_type
         r_func = self.report_functions.get(r_type)
+
+        if r_func is None:
+            print(f'Неподходящий тип отчета "{r_type}"')
+            exit
 
 
 def main():
@@ -53,7 +55,6 @@ def main():
     report = Report(c_args.report_type, logs)
 
     report.write_report()
-    print(c_args)
 
 
 if __name__ == '__main__':
