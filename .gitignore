@@ -1,3 +1,5 @@
 /.venv
 /.vscode
 test_script.py
+example1.log
+example2.log

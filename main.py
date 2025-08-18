@@ -40,6 +40,7 @@ class Report:
         r_func = self.report_functions.get(r_type)
 
         if r_func is None:
+            # Пока крашим скрипт в случае неподходящего типа
             print(f'Неподходящий тип отчета "{r_type}"')
             exit
 
